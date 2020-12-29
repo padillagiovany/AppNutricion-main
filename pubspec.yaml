@@ -45,6 +45,7 @@ dependencies:
   about: ^1.4.0
   flutter_local_notifications: ^3.0.2
   cache_image: ^1.0.5
+  liquid_pull_to_refresh: ^2.0.0
 
 dev_dependencies:
   flutter_test:
