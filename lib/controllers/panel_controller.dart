@@ -1,19 +1,28 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:nutricion/api/loginAPI.dart';
 import 'package:nutricion/layouts/acercade/acerca_de.dart';
 import 'package:nutricion/layouts/login.dart';
 import 'package:nutricion/layouts/perfil/perfil.dart';
 import 'package:nutricion/layouts/recetarios/menu_recetarios.dart';
 import 'package:nutricion/layouts/recetarios/recetario_viewer.dart';
 import 'package:nutricion/layouts/rutina/rutina.dart';
+import 'package:nutricion/models/payment_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class PanelController extends GetxController{
   List _user = [];
   List get user => _user;
+
   bool _started = false;
   bool get started => _started;
+
+  String _paymentCode = 'error';
+  String get paymentCode => _paymentCode;
+
+  bool _status = false;
+  bool get status => _status;
 
   @override
   void onInit() {
@@ -24,6 +33,31 @@ class PanelController extends GetxController{
   @override
   void onReady() {
     super.onReady();
+    
+  }
+
+  Future<void> checkPayment(String email) async{
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final Payment data = await LoginAPI.instance.checkPayment(email);
+
+      try {
+        if(data.response != null){
+          
+          await prefs.setStringList('payment', [
+            data.code,
+          ]);
+          _started = true;
+          _paymentCode = data.code;
+          print("---------------- DATA.CODE ----------------");
+          print(data.code);
+          update(['panel']);
+        }
+      } catch (e) {
+        _started = true;
+        _paymentCode = 'error';
+        update(['panel']);
+      }
+      
   }
 
   void getUser() async{
@@ -37,13 +71,13 @@ class PanelController extends GetxController{
         );
       }else{
         _user = data;
-        _started = true;
-        update(['panel']);
+        checkPayment(data[3]);
       }
     } catch (e) {
       print(e);
     }
   }
+
 
   void goToProfile(){
     Get.to(PerfilUsuario(), preventDuplicates:false, transition: Transition.cupertinoDialog);

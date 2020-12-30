@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:nutricion/models/login_model.dart';
+import 'package:nutricion/models/payment_model.dart';
 import 'package:nutricion/models/signin_model.dart';
 class LoginAPI{
   
@@ -30,7 +31,7 @@ class LoginAPI{
     }
   }
 
-    Future <SigninPaciente> signIn(Map<String, dynamic> datos) async{
+  Future <SigninPaciente> signIn(Map<String, dynamic> datos) async{
     try{
       FormData formData = FormData.fromMap(datos);
 
@@ -43,6 +44,27 @@ class LoginAPI{
     
     }catch(e){
       print(e.toString());
+      return null;
+    }
+  }
+
+  Future <Payment> checkPayment(String email) async{
+    try{
+      FormData formData = FormData.fromMap({
+          "key": 6,
+          "email": email,
+      });
+
+      final Response response = await this._dio.post(
+        'https://www.nutricion.caitec.mx/controller/pacienteController.php', 
+        data: formData, 
+      );
+      
+      return Payment.fromJson(jsonDecode(response.data));
+    
+    }catch(e){
+      print(e.toString());
+      print("ERROR EN LA CONEXIÓN");
       return null;
     }
   }

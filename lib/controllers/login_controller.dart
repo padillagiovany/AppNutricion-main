@@ -2,14 +2,16 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nutricion/api/loginAPI.dart';
 import 'package:nutricion/models/login_model.dart';
 import 'package:get/state_manager.dart';
+import 'package:nutricion/models/payment_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController{
+
   LoginPaciente _loginPaciente;
   LoginPaciente get loginPaciente => _loginPaciente;
+
   String _status = '';
   String get status => _status;
-
 
   @override
   void onInit() {
@@ -39,6 +41,4 @@ class LoginController extends GetxController{
     }
     update(['login']);
   }
-
-
 }
