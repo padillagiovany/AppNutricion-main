@@ -19,8 +19,6 @@ class Panel extends StatelessWidget {
       // ignore: missing_return
       builder: (_){
         if(_.started){
-          print("-------------- PAYMENT CODE --------------");
-          print(_.paymentCode);
           switch (_.paymentCode) {
             case "200":
               return Scaffold(
@@ -343,7 +341,9 @@ class Panel extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _.goToCitas();
+                                    },
                                     child: Text('VER CITAS', style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,

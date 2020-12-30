@@ -1,15 +1,19 @@
+import 'package:meta/meta.dart' show required;
+
 class NotificationModel {
-  String fechaCita;
-  String notas;
+  final String fechaCita;
+  final String notas;
 
   NotificationModel({
-    this.fechaCita, 
-    this.notas}
+    @required this.fechaCita, 
+    @required this.notas}
   );
 
-  NotificationModel.fromJson(Map<String, dynamic> json) {
-    fechaCita = json['FechaCita'];
-    notas = json['Notas'];
+  static NotificationModel fromJson(Map<String, dynamic> json) {
+    return NotificationModel(
+      fechaCita: json['FechaCita'],
+      notas: json['Notas']
+    );
   }
 
   Map<String, dynamic> toJson() {

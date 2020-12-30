@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:dio/dio.dart';
@@ -22,7 +23,8 @@ class NotificationAPI {
         'https://www.nutricion.caitec.mx/controller/citasController.php', 
         data: formData, 
       );
-      return (response as List).map((e) => NotificationModel.fromJson(e)).toList();
+      
+      return (jsonDecode(response.data) as List).map((e) => NotificationModel.fromJson(e)).toList();
     } catch (e) {
       print(e);
       return null;

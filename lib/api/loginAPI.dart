@@ -64,7 +64,6 @@ class LoginAPI{
     
     }catch(e){
       print(e.toString());
-      print("ERROR EN LA CONEXIÓN");
       return null;
     }
   }

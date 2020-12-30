@@ -31,15 +31,15 @@ class LoginPaciente {
     acceso = json['acceso'];
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['nombre'] = this.nombre;
-  //   data['apaterno'] = this.apaterno;
-  //   data['amaterno'] = this.amaterno;
-  //   data['email'] = this.email;
-  //   data['telefono'] = this.telefono;
-  //   data['nacimiento'] = this.nacimiento;
-  //   data['acceso'] = this.acceso;
-  //   return data;
-  // }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['nombre'] = this.nombre;
+    data['apaterno'] = this.apaterno;
+    data['amaterno'] = this.amaterno;
+    data['email'] = this.email;
+    data['telefono'] = this.telefono;
+    data['nacimiento'] = this.nacimiento;
+    data['acceso'] = this.acceso;
+    return data;
+  }
 }

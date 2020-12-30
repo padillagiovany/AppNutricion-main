@@ -14,11 +14,10 @@ class SigninPaciente {
     response = json['response'];
   }
   
-
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['code'] = this.code;
-  //   data['response'] = this.response;
-  //   return data;
-  // }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['code'] = this.code;
+    data['response'] = this.response;
+    return data;
+  }
 }

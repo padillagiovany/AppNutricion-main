@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nutricion/api/loginAPI.dart';
 import 'package:nutricion/layouts/acercade/acerca_de.dart';
+import 'package:nutricion/layouts/citas/citas.dart';
 import 'package:nutricion/layouts/login.dart';
 import 'package:nutricion/layouts/perfil/perfil.dart';
 import 'package:nutricion/layouts/recetarios/menu_recetarios.dart';
@@ -48,8 +49,6 @@ class PanelController extends GetxController{
           ]);
           _started = true;
           _paymentCode = data.code;
-          print("---------------- DATA.CODE ----------------");
-          print(data.code);
           update(['panel']);
         }
       } catch (e) {
@@ -85,6 +84,10 @@ class PanelController extends GetxController{
 
   void goToRecipes(){
     Get.to(MenuRecetarios(), preventDuplicates:false, transition: Transition.cupertinoDialog);
+  }
+
+  void goToCitas(){
+    Get.to(Citas(), preventDuplicates:false, transition: Transition.cupertinoDialog);
   }
 
    void goAbout(){
