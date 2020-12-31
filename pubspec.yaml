@@ -44,6 +44,7 @@ dependencies:
   flutter_cached_pdfview: ^0.3.3
   about: ^1.4.0
   flutter_local_notifications: ^3.0.2
+  timezone: ^0.5.9
   cache_image: ^1.0.5
   liquid_pull_to_refresh: ^2.0.0
   lottie: ^0.7.0+1

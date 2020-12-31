@@ -25,6 +25,7 @@ class Citas extends StatelessWidget {
               itemCount: _.notifications.length,
               itemBuilder: (context, index){
                 final NotificationModel notificationModel = _.notifications[index];
+                _.notificationSchedule(notificationModel.fechaCita, notificationModel.horaNotificacion, index, notificationModel.notas);
                 return ListTile(
                   trailing: Icon(Icons.schedule_rounded),
                   title: Text(notificationModel.notas),
