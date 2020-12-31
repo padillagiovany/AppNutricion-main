@@ -520,8 +520,12 @@ class Panel extends StatelessWidget {
               break;
           }
         }else{
-          return Center(
-            child: CircularProgressIndicator(),
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(
+                valueColor: new AlwaysStoppedAnimation<Color>(Color(0xAAA02837)),
+              ),
+            ),
           );
         }
       },

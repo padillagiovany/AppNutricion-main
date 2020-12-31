@@ -21,6 +21,9 @@ class NotificationsController extends GetxController{
   bool _status = false;
   bool get status => _status;
 
+  bool _notificationStatus = false;
+  bool get notificationStatus => _notificationStatus;
+
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
   AndroidInitializationSettings androidInitializationSettings;
@@ -39,7 +42,6 @@ class NotificationsController extends GetxController{
     super.onReady();
     loadNotifications();
   }
-
 
 
   void initializing() async {
@@ -64,8 +66,14 @@ class NotificationsController extends GetxController{
       }else{
         _user = userData;
         final data  = await NotificationAPI.instance.getNotifications(userData[3]);
-        _notifications = data;
-        _status = true;
+        if(data[0].fechaCita != null){
+          _notifications = data;
+          _status = true;
+          _notificationStatus = true;
+        }else{
+          _status = false;
+          _notificationStatus = false;
+        }
         update(['notificaciones']);
       }
     } catch (e) {
@@ -98,8 +106,8 @@ class NotificationsController extends GetxController{
 
     print("$id.- HORA PREVIA --------------------------> $horaCita");
     print("$id.- HORA CITA -----------------------------> $notificacion");
-
-    if(notificacion.isBefore(DateTime.now())){
+    print(new DateTime.now());
+    if(notificacion.isBefore(new DateTime.now())){
       print("Ya pasó");
     }else{
       await flutterLocalNotificationsPlugin.zonedSchedule(
@@ -136,6 +144,15 @@ class NotificationsController extends GetxController{
             child: Text("Okay")),
       ],
     );
+  }
+
+  bool getNotificationTime(String not){
+    var notificacion = DateTime.parse(not);
+    bool state = false;
+    if(!notificacion.isBefore(new DateTime.now())){
+      state = true;
+    }
+    return state;
   }
 
 }

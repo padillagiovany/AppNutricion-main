@@ -22,7 +22,7 @@ class MenuRecetarios extends StatelessWidget {
             children:<Widget>[
               Divider(),
               ListTile(
-                title: Text('Recetario general'),
+                title: Text('Recetario General'),
                 trailing: IconButton(
                   icon: Icon(Icons.send),
                   onPressed: (){
