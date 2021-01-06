@@ -61,7 +61,7 @@ class Login extends StatelessWidget {
                       border: OutlineInputBorder(),
                       suffixIcon: IconButton(
                       icon: Icon(
-                        Icons.visibility,
+                        Icons.lock,
                         color: Colors.black,
                       ),
                       onPressed: () {},

@@ -1,3 +1,4 @@
+
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nutricion/api/loginAPI.dart';
@@ -7,9 +8,11 @@ import 'package:nutricion/layouts/login.dart';
 import 'package:nutricion/layouts/perfil/perfil.dart';
 import 'package:nutricion/layouts/recetarios/menu_recetarios.dart';
 import 'package:nutricion/layouts/recetarios/recetario_viewer.dart';
-import 'package:nutricion/layouts/rutina/rutina.dart';
+import 'package:nutricion/layouts/rutinas/menu_rutinas.dart';
+import 'package:nutricion/layouts/rutinas/rutina.dart';
 import 'package:nutricion/models/payment_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class PanelController extends GetxController{
@@ -56,13 +59,13 @@ class PanelController extends GetxController{
         _paymentCode = 'error';
         update(['panel']);
       }
-      
   }
 
   void getUser() async{
      try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       List data = prefs.getStringList('user');
+      print(data);
       if(user == null){
         Get.off(
           Login(),
@@ -70,7 +73,7 @@ class PanelController extends GetxController{
         );
       }else{
         _user = data;
-        checkPayment(data[3]);
+        checkPayment(data[4]);
       }
     } catch (e) {
       print(e);
@@ -106,8 +109,16 @@ class PanelController extends GetxController{
     Get.to(RecetarioViewer(), preventDuplicates:false, transition: Transition.cupertinoDialog, arguments: ['Recetario Healty','3.pdf']);
   }
 
+  void viewR1(){
+    Get.to(Rutina(), preventDuplicates:false, transition: Transition.cupertinoDialog, arguments: ['Rutina 1','rutinas/rutina1',24]);
+  }
+
+   void viewR2(){
+    Get.to(Rutina(), preventDuplicates:false, transition: Transition.cupertinoDialog, arguments: ['Rutina 2','rutinas/rutina2',16]);
+  }
+
   void goToRutine(){
-    Get.to(Rutina(), preventDuplicates:false, transition: Transition.cupertinoDialog);
+    Get.to(MenuRutinas(), preventDuplicates:false, transition: Transition.cupertinoDialog);
   }
 
   void closeSession() async{
@@ -115,4 +126,17 @@ class PanelController extends GetxController{
     await preferences.clear();
     Get.offAll(Login(), transition: Transition.cupertinoDialog);
   }
+
+  void sendWhatsApp() async{
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      List data = prefs.getStringList('user');
+      String texto = "👋🏻 Hola, mi nombre es ${data[1]}, solicito información para " +
+      "pagar el acceso a los recetarios. \n\n 📱 AppNutrición Integral. \n Correo: ${data[4]}";
+      await launch("https://wa.me/+052-(443)5076103?text=$texto");
+    } catch (e) {
+      print(e);
+    }
+  }
+
 }

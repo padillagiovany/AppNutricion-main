@@ -26,6 +26,7 @@ class LoginController extends GetxController{
       this._status = '${data.nombre} ${data.apaterno} ${data.amaterno}';
       
       await prefs.setStringList('user', [
+        data.id,
         data.nombre,
         data.apaterno,
         data.amaterno,

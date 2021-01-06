@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart' show required;
 
 class LoginPaciente {
+  String id;
   String nombre;
   String apaterno;
   String amaterno;
@@ -11,6 +12,7 @@ class LoginPaciente {
 
   LoginPaciente(
     {
+      @required this.id,
       @required this.nombre,
       @required this.apaterno,
       @required this.amaterno,
@@ -22,6 +24,7 @@ class LoginPaciente {
   );
 
   LoginPaciente.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     nombre = json['nombre'];
     apaterno = json['apaterno'];
     amaterno = json['amaterno'];
@@ -33,6 +36,7 @@ class LoginPaciente {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['idpa'] = this.id;
     data['nombre'] = this.nombre;
     data['apaterno'] = this.apaterno;
     data['amaterno'] = this.amaterno;

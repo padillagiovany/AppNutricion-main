@@ -27,7 +27,7 @@ class NotificationAPI {
       return (jsonDecode(response.data) as List).map((e) => NotificationModel.fromJson(e)).toList();
     } catch (e) {
       print(e);
-      return null;
+      return [];
     }
   }
 }

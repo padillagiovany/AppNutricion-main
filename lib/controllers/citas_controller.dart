@@ -65,14 +65,19 @@ class NotificationsController extends GetxController{
         );
       }else{
         _user = userData;
-        final data  = await NotificationAPI.instance.getNotifications(userData[3]);
-        if(data[0].fechaCita != null){
-          _notifications = data;
+        final data  = await NotificationAPI.instance.getNotifications(userData[4]);
+        if(data.length == 0){
           _status = true;
-          _notificationStatus = true;
-        }else{
-          _status = false;
           _notificationStatus = false;
+        }else{
+          if(data[0].fechaCita != null){
+            _notifications = data;
+            _status = true;
+            _notificationStatus = true;
+          }else{
+            _status = false;
+            _notificationStatus = false;
+          }
         }
         update(['notificaciones']);
       }
@@ -102,10 +107,9 @@ class NotificationsController extends GetxController{
     
     var horaCita = DateTime.parse(date);
     var notificacion = DateTime.parse(not);
-
-
     print("$id.- HORA PREVIA --------------------------> $horaCita");
-    print("$id.- HORA CITA -----------------------------> $notificacion");
+    print("$id.- HORA CITA ----------------------------> $notificacion");
+    print("$id.- HORA ACTUAL --------------------------> ${new DateTime.now()}");
     print(new DateTime.now());
     if(notificacion.isBefore(new DateTime.now())){
       print("Ya pasó");
@@ -120,7 +124,6 @@ class NotificationsController extends GetxController{
       );
     }
     
-    print(flutterLocalNotificationsPlugin.pendingNotificationRequests().toString());
   }
 
   Future onSelectNotification(String payLoad) {
