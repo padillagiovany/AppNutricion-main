@@ -12,10 +12,11 @@ import 'package:progress_indicator_button/progress_button.dart';
 import 'package:status_alert/status_alert.dart';
 
 
- final _formKey = GlobalKey<FormState>();
+
 // ignore: must_be_immutable
 class SignIn extends StatelessWidget {
   
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _nombre = TextEditingController();
   final TextEditingController _apaterno = TextEditingController();
   final TextEditingController _amaterno = TextEditingController();

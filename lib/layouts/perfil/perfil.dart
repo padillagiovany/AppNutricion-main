@@ -26,9 +26,15 @@ class PerfilUsuario extends StatelessWidget {
             ),
             body: ListView(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text('Perfil de Usuario:', style: TextStyle(
+                        fontSize: 20,
+                      ),),
+                ),
                 ListTile(
                   title: Text('Nombre:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[1]),
                   leading: Icon(Icons.account_circle, size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -71,7 +77,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Apellido Paterno:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[2]),
                   leading: Icon(Icons.text_fields_rounded,size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -114,7 +120,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Apellido Materno:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[3]),
                   leading: Icon(Icons.text_fields_rounded, size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -157,7 +163,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Correo:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[4]),
                   leading: Icon(Icons.email, size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -199,7 +205,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Telefono:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[5]),
                   leading: Icon(Icons.phone_android_rounded, size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -241,7 +247,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Fecha de nacimiento:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(_.profile[6]),
                   leading: Icon(Icons.cake, size:45.0, color: HexColor('#ac5a65'),),
                   trailing: IconButton(
@@ -284,7 +290,7 @@ class PerfilUsuario extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('Contraseña:'),
-                  contentPadding: EdgeInsets.only(left: 16),
+                  contentPadding: EdgeInsets.only(left: 16, right: 16),
                   subtitle: Text(
                     _.profile[7].toString().replaceRange(3, _.profile[7].length, '***'),
                   ),
