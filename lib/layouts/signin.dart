@@ -1,8 +1,6 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:gender_selection/gender_selection.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
@@ -15,6 +13,7 @@ import 'package:status_alert/status_alert.dart';
 
 
  final _formKey = GlobalKey<FormState>();
+// ignore: must_be_immutable
 class SignIn extends StatelessWidget {
   
   final TextEditingController _nombre = TextEditingController();
@@ -121,9 +120,8 @@ class SignIn extends StatelessWidget {
                       controller: _telefono,
                       keyboardType: TextInputType.phone,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      inputFormatters: [MaskedInputFormater('##-000-#####')],
                       decoration: decoracion('Ingresa tu teléfono',Icon(Icons.phone_android, color: Colors.black,)),
-                      validator: (input) => input.length != 12
+                      validator: (input) => input.length != 10
                           ? 'Llena el campo con un teléfono'
                           : null,
                     ),

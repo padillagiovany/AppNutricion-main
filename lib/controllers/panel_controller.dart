@@ -6,6 +6,7 @@ import 'package:nutricion/layouts/acercade/acerca_de.dart';
 import 'package:nutricion/layouts/citas/citas.dart';
 import 'package:nutricion/layouts/login.dart';
 import 'package:nutricion/layouts/perfil/perfil.dart';
+import 'package:nutricion/layouts/progreso/progresos.dart';
 import 'package:nutricion/layouts/recetarios/menu_recetarios.dart';
 import 'package:nutricion/layouts/recetarios/recetario_viewer.dart';
 import 'package:nutricion/layouts/rutinas/menu_rutinas.dart';
@@ -37,7 +38,6 @@ class PanelController extends GetxController{
   @override
   void onReady() {
     super.onReady();
-    
   }
 
   Future<void> checkPayment(String email) async{
@@ -91,6 +91,10 @@ class PanelController extends GetxController{
 
   void goToCitas(){
     Get.to(Citas(), preventDuplicates:false, transition: Transition.cupertinoDialog);
+  }
+
+  void goToProgress(){
+    Get.to(Progresos(), preventDuplicates:false, transition: Transition.cupertinoDialog);
   }
 
    void goAbout(){

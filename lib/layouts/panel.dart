@@ -1,14 +1,12 @@
 import 'package:expansion_card/expansion_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:get/state_manager.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:nutricion/controllers/panel_controller.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Panel extends StatelessWidget {
 
@@ -30,6 +28,15 @@ class Panel extends StatelessWidget {
                         colors: [HexColor('#ac5a65'), HexColor('#771929')]
                     ),
                     actions: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.refresh_rounded,
+                                color: Colors.white
+                              ),
+                              onPressed: () {
+                                _.getUser();
+                              }
+                            ),
                             IconButton(
                               icon: Icon(
                                 Icons.settings,
@@ -377,7 +384,9 @@ class Panel extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _.goToProgress();
+                                    },
                                     child: Text('IR A MI PROGRESO', style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,
@@ -404,6 +413,15 @@ class Panel extends StatelessWidget {
                         colors: [HexColor('#ac5a65'), HexColor('#771929')]
                     ),
                     actions: <Widget>[
+                            IconButton(
+                              icon: Icon(
+                                Icons.refresh_rounded,
+                                color: Colors.white
+                              ),
+                              onPressed: () {
+                                _.getUser();
+                              }
+                            ),
                             IconButton(
                               icon: Icon(
                                 Icons.settings,
@@ -771,7 +789,9 @@ class Panel extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(18.0),
                                   ),
                                   child: RaisedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _.goToProgress();
+                                    },
                                     child: Text('IR A MI PROGRESO', style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20.0,

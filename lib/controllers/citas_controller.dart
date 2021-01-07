@@ -86,6 +86,7 @@ class NotificationsController extends GetxController{
     }
   }
 
+  // ignore: unused_element
   _showNotifications(String date, String not, int id, String body) async {
   
     await notificationSchedule(date, not, id, body);
@@ -126,6 +127,7 @@ class NotificationsController extends GetxController{
     
   }
 
+  // ignore: missing_return
   Future onSelectNotification(String payLoad) {
     if (payLoad != null) {
       print(payLoad);
