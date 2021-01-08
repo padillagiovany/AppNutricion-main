@@ -4,6 +4,7 @@ import 'package:nutricion/models/progress_model.dart';
 import 'package:nutricion/models/signin_model.dart';
 
 class ProgresoAPI {
+  
   ProgresoAPI._internal();
   static ProgresoAPI _instance = ProgresoAPI._internal();
   static ProgresoAPI get instance => _instance;

@@ -142,11 +142,11 @@ class Progresos extends StatelessWidget {
                       height: 210,
                     ),
                     Text(
-                      'No tienes citas',
+                      'No tienes progresos',
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     Text(
-                        'Al registrarse una cita la app te notificará unas horas antes.'),
+                        'Puedes registrar tus progresos tocando el botón azúl.'),
                     Container(
                       height: 10,
                     ),
