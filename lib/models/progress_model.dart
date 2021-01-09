@@ -1,4 +1,5 @@
 class PacienteProgreso {
+  String id;
   String peso;
   String cintura;
   String cadera;
@@ -9,7 +10,8 @@ class PacienteProgreso {
   String fechaProgreso;
 
   PacienteProgreso(
-      {this.peso,
+      {this.id,
+      this.peso,
       this.cintura,
       this.cadera,
       this.brazo,
@@ -21,6 +23,7 @@ class PacienteProgreso {
 
   static PacienteProgreso fromJson(Map<String, dynamic> json) {
     return PacienteProgreso(
+      id : json['id'],
       peso : json['peso'],
       cintura : json['cintura'],
       cadera : json['cadera'],

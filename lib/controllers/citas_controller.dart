@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:nutricion/api/notificationAPI.dart';
 import 'package:nutricion/layouts/login.dart';
 import 'package:nutricion/models/notification_model.dart';
+import 'package:nutricion/models/signin_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -20,6 +21,9 @@ class NotificationsController extends GetxController{
 
   bool _status = false;
   bool get status => _status;
+
+  String _statusCita;
+  String get statusCita => _statusCita;
 
   bool _notificationStatus = false;
   bool get notificationStatus => _notificationStatus;
@@ -52,6 +56,17 @@ class NotificationsController extends GetxController{
         android: androidInitializationSettings, iOS: iosInitializationSettings);
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: onSelectNotification);
+  }
+
+  Future<void> createCita(Map<String, dynamic> datos) async{
+    final SigninPaciente data = await NotificationAPI.instance.createCita(datos);
+    print(data.code);
+    if(data.code!=null){
+      this._statusCita = '200';
+    }else{
+      this._statusCita = '404';
+    }
+    update(['progreso']);
   }
 
   Future<void> loadNotifications() async{

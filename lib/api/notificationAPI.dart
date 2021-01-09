@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:nutricion/models/notification_model.dart';
+import 'package:nutricion/models/signin_model.dart';
 
 class NotificationAPI {
   
@@ -26,6 +27,22 @@ class NotificationAPI {
     } catch (e) {
       print(e);
       return [];
+    }
+  }
+
+  Future <SigninPaciente> createCita(Map<String, dynamic> datos) async{
+    try{
+      FormData formData = FormData.fromMap(datos);
+      final Response response = await this._dio.post(
+        'https://www.nutricion.caitec.mx/controller/citasController.php', 
+        data: formData, 
+      );
+      print("PROFILEAPI LINE-------------");
+      print(response.data);
+      return SigninPaciente.fromJson(jsonDecode(response.data));
+    }catch(e){
+      print(e.toString());
+      return null;
     }
   }
 }

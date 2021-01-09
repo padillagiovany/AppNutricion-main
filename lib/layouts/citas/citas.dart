@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nutricion/controllers/citas_controller.dart';
+import 'package:nutricion/layouts/citas/nuevaCita.dart';
 import 'package:nutricion/models/notification_model.dart';
 
 class Citas extends StatelessWidget {
@@ -22,6 +24,14 @@ class Citas extends StatelessWidget {
                     colors: [HexColor('#ac5a65'), HexColor('#771929')]
                 ),
                 title: Text('Mis Citas'),
+                actions: [
+                  IconButton(
+                    icon: Icon(Icons.refresh_rounded),
+                    onPressed: (){
+                      _.loadNotifications();
+                    },
+                  ),
+                ],
               ),
               body: ListView.builder(
                 itemCount: _.notifications.length,
@@ -36,6 +46,12 @@ class Citas extends StatelessWidget {
                     subtitle: Text(notificationModel.fechaCita),
                   );
                 },
+              ),
+              floatingActionButton: FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: (){
+                  Get.to(NuevaCita());
+                }
               ),
             );
           }else{

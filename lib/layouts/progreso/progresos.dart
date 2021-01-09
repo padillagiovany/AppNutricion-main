@@ -5,11 +5,10 @@ import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nutricion/controllers/progreso_controller.dart';
+import 'package:nutricion/layouts/progreso/editarProgreso.dart';
 import 'package:nutricion/layouts/progreso/registrarProgreso.dart';
 import 'package:nutricion/models/progress_model.dart';
-import 'package:progress_indicator_button/progress_button.dart';
 import 'package:status_alert/status_alert.dart';
-import 'package:toggle_bar/toggle_bar.dart';
 
 class Progresos extends StatelessWidget {
   List<String> labels = ["Mi progreso", "Nuevo progreso"];
@@ -43,8 +42,8 @@ class Progresos extends StatelessWidget {
                   return Column(
                     children: [
                       SizedBox(
-                          height: 25,
-                        ),
+                        height: 25,
+                      ),
                       Text(pacienteModel.fechaProgreso),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -92,6 +91,27 @@ class Progresos extends StatelessWidget {
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 18),
                                     ),
+                                    IconButton(
+                                      icon: Icon(Icons.edit, color: Colors.white),
+                                      color: HexColor('#771929'),
+                                      onPressed: () {
+                                        Get.to(EditarProgreso(),
+                                            preventDuplicates: false,
+                                            transition:
+                                                Transition.cupertinoDialog,
+                                            arguments: [
+                                              pacienteModel.id,
+                                              pacienteModel.peso,
+                                              pacienteModel.cintura,
+                                              pacienteModel.cadera,
+                                              pacienteModel.brazo,
+                                              pacienteModel.imc,
+                                              pacienteModel.grasa,
+                                              pacienteModel.musculo,
+                                              pacienteModel.fechaProgreso
+                                            ]);
+                                      },
+                                    )
                                   ],
                                 )
                               ],
